@@ -1,0 +1,4 @@
+#!/bin/sh
+cd ..
+
+zip K3OpEenRij.zip $(ls *.exe)

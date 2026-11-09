@@ -1,0 +1,26 @@
+# Check that the game runs in a browser, as on the website
+name: Test game
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test_game:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: pip install playwright pillow
+      - run: python -m playwright install --with-deps chromium
+      - name: Smoke test in a browser
+        run: |
+          cp lonelier_pong.pde docs/game/
+          (cd docs/game && python3 -m http.server 8000) &
+          sleep 2
+          python3 .github/smoke_test.py

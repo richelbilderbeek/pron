@@ -18,5 +18,5 @@ if [[ "$PWD" =~ scripts$ ]]; then
     exit 42
 fi
 
-cp Processing/pong_3d/pong_3d.pde docs/game/
+./scripts/add_game_to_website.sh
 zensical serve

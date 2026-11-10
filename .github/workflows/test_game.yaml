@@ -20,7 +20,7 @@ jobs:
       - run: python -m playwright install --with-deps chromium
       - name: Smoke test in a browser
         run: |
-          cp lonelier_pong.pde docs/game/
+          ./scripts/add_game_to_website.sh
           (cd docs/game && python3 -m http.server 8000) &
           sleep 2
           python3 .github/smoke_test.py

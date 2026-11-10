@@ -2,7 +2,7 @@
 
 Tron, written in Processing.
 
-![Pron v1.0](pics/Pron_1_0.png)
+![Pron v1.0](pron_1_0.png)
 
 ## Gameplay
 

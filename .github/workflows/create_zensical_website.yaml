@@ -10,7 +10,7 @@ on:
       - .github/workflows/create_zensical_website.yaml
       - 'docs/**'
       - zensical.toml
-      - pong_3d.pde
+      - pron.pde
 
 permissions:
   contents: read
@@ -30,7 +30,25 @@ jobs:
         with:
           python-version: 3.x
       - name: Add the game to the website
-        run: cp pron.pde docs/game/
+        run: |
+          cp pron.pde docs/game/
+          curl --fail --silent --show-error --location \
+            --output docs/game/processing.min.js \
+            https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js
+          cat > docs/game/pron.html <<'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>Pron</title>
+            <script src="processing.min.js"></script>
+            <style>html, body { margin: 0; padding: 0; background: black; overflow: hidden; }</style>
+          </head>
+          <body>
+            <canvas data-processing-sources="pron.pde" tabindex="0"></canvas>
+          </body>
+          </html>
+          EOF
       - run: pip install zensical
       - run: zensical build --clean --strict
       - uses: actions/upload-pages-artifact@v4

@@ -12,9 +12,8 @@ The world is donut-shaped.
 
 ## Controls
 
- * `a`: blue player turn left
- * `d`: blue player turn right
- * arrow left: red player turn left
- * arrow right: red player turn right
-
+* `a`: blue player turn left
+* `d`: blue player turn right
+* arrow left: red player turn left
+* arrow right: red player turn right
 
